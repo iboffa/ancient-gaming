@@ -8,6 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './box-detail.component.html',
   styleUrls: ['./box-detail.component.scss']
 })
-export class BoxDetailComponent {
+export default class BoxDetailComponent {
 
 }
