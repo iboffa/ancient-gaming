@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { boxesReducer } from './state/boxes/boxes.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BoxesEffects } from './state/boxes/boxes.effects';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({ boxes: boxesReducer }),
+    EffectsModule.forRoot([BoxesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

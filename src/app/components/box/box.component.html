@@ -1,0 +1,21 @@
+<div class="box-item-detail">
+    <div>
+      <img
+        [src]="box.iconUrl"
+        class="box-image"
+        width="auto"
+        height="150"
+        alt="No image"
+      />
+    </div>
+    <div>
+      <h4>{{ box.name }}</h4>
+      <p class="cost">Cost: {{ box.cost }} TKN</p>
+      <a
+        *ngIf="action === 'view'"
+        class="view-button"
+        [routerLink]="'/box/' + box.id"
+        >View</a
+      >
+    </div>
+  </div>

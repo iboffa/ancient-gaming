@@ -1,0 +1,14 @@
+<ng-container *ngIf="box$ | async as box">
+  <app-box [box]="box" action="open"></app-box>
+  <button (click)="openBox(box.id)">Open</button>
+
+  <div *ngIf="wonItem$">
+    <span *ngIf="wonItem$ | async as item">
+      You won {{ item.name }}! (Value: {{ item.value }} TKN)
+    </span>
+  </div>
+
+  <div *ngIf="opening">
+    Opening the box...
+  </div>
+</ng-container>
