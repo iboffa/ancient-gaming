@@ -1,0 +1,8 @@
+<header>
+  <h1>Ancient Gaming mistery boxes</h1>
+  <div *ngIf="logged$ | async">
+    <div>{{ userName$ | async }}</div>
+    <div>{{ amount$ | async }}</div>
+  </div>
+  <button *ngIf="!(logged$ | async)" (click)="login()">Login</button>
+</header>

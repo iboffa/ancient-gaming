@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -34,7 +33,7 @@ export default class BoxDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.box$ = this.store.pipe(select(selectBox(this.route.snapshot.params['id'])))
+    this.box$ = this.store.pipe(select(selectBox(this.route.snapshot.params['id'])));
   }
 
   openBox(boxId: string) {
