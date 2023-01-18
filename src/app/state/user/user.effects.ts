@@ -4,6 +4,7 @@ import { map, switchMap, tap } from 'rxjs';
 import { UserService } from 'src/app/services/user-service/user.service';
 import {
   loadUserData,
+  loadUserDataFailure,
   loadUserDataSuccess,
 } from './user.actions';
 
@@ -16,11 +17,12 @@ export class UserEffects {
 
   loaduser$ = createEffect(() => {
     return this.actions$.pipe(
+
       ofType(loadUserData),
       switchMap(() =>
         this.userService
           .getUserData()
-          .pipe(map((user) => loadUserDataSuccess({ user })))
+          .pipe(map((user) => user ? loadUserDataSuccess({ user }) : loadUserDataFailure()))
       )
     );
   });

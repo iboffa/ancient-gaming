@@ -13,3 +13,6 @@ export const selectLoggedStatus = () =>
 
 export const selectUserName = () =>
   createSelector(selectUser, (userState) => userState.user.name);
+
+export const selectStatus = () =>
+  createSelector(selectUser, (userState) => userState.status);

@@ -6,7 +6,7 @@
     <div>Balance:</div>
     <div>{{ amount$ | async }}</div>
   </div>
-  <div *ngIf="!(logged$ | async)" class="vertically-centered">
+  <div *ngIf="!(logged$ | async) && ((userLoadingStatus$ |async) === 'failure')" class="vertically-centered">
     <button (click)="login()">Login</button>
   </div>
 </header>
