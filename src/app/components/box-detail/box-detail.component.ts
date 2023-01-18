@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnInit,
 } from '@angular/core';
@@ -22,7 +21,7 @@ import { AppState } from 'src/app/state/app.state';
   imports: [CommonModule, RouterModule, BoxComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BoxDetailComponent implements OnInit {
+export class BoxDetailComponent implements OnInit {
   box$: Observable<Box | undefined> = this.store.pipe(
     select(selectBox(this.route.snapshot.params['id']))
   );

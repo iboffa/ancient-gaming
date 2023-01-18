@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'box/:id',
-    loadComponent: () => import('./components/box-detail/box-detail.component'),
+    loadComponent: () => import('./components/box-detail/box-detail.component').then(c => c.BoxDetailComponent),
   },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
 ];
