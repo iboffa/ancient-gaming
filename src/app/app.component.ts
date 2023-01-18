@@ -8,6 +8,4 @@ import { AppState } from './state/app.state';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private store: Store<AppState>) {
-  }
 }

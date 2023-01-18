@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable, map, noop } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { AppState } from 'src/app/state/app.state';
 import { updateWallet } from 'src/app/state/user/user.actions';
 import {

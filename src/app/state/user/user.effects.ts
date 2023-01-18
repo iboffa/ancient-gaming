@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { UserService } from 'src/app/services/user-service/user.service';
 import {
   loadUserData,
