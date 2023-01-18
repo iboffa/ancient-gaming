@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { userReducer } from './state/user/user.reducer';
 import { UserEffects } from './state/user/user.effects';
 import { AppState } from './state/app.state';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { loadUserData } from './state/user/user.actions';
 import { loadBoxes } from './state/boxes/boxes.actions';
 
