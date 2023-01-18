@@ -1,8 +1,12 @@
 <header>
   <h1>Ancient Gaming mistery boxes</h1>
-  <div *ngIf="logged$ | async">
+  <div *ngIf="logged$ | async" class="vertically-centered user-info">
+    <div>User:</div>
     <div>{{ userName$ | async }}</div>
+    <div>Balance:</div>
     <div>{{ amount$ | async }}</div>
   </div>
-  <button *ngIf="!(logged$ | async)" (click)="login()">Login</button>
+  <div *ngIf="!(logged$ | async)" class="vertically-centered">
+    <button (click)="login()">Login</button>
+  </div>
 </header>

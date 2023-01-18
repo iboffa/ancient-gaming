@@ -13,7 +13,6 @@ export type ItemVariant = {
   id: string;
   name: string;
   value: number;
-  iconUrl: string;
 }
 
 export type WonItem = {

@@ -1,15 +1,19 @@
-<ng-container *ngIf="box$ | async as box">
+<div *ngIf="box$ | async as box" class="details-container">
   <app-box [box]="box" action="open"></app-box>
-  <button (click)="openBox(box.id)">Open</button>
 
-  <div *ngIf="wonItem$">
+  <div *ngIf="opening" class="center-host">
+    <img src="assets/loading.gif" width="60" height="60" alt="" />
+  </div>
+
+  <div *ngIf="!wonItemLoaded && !opening"></div>
+
+  <div *ngIf="(wonItem$ | async) && wonItemLoaded" class="center-host">
     <span *ngIf="wonItem$ | async as item">
       You won {{ item.name }}! (Value: {{ item.value }} TKN)
     </span>
   </div>
 
-  <div *ngIf="opening">
-    Opening the box...
-    <img src="assets/loading.gif" width="30" height="30" alt="">
+  <div class="center-host">
+    <button (click)="openBox(box.id)" [disabled]="opening">Open</button>
   </div>
-</ng-container>
+</div>

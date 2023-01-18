@@ -1,12 +1,13 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Box, ItemVariant } from 'src/graphql.types';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { BoxComponent } from '../box/box.component';
 import { BoxesService } from 'src/app/services/boxes-service/boxes.service';
 import { select, Store } from '@ngrx/store';
@@ -22,9 +23,12 @@ import { AppState } from 'src/app/state/app.state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BoxDetailComponent implements OnInit {
-  box$: Observable<Box | undefined> = this.store.pipe(select(selectBox(this.route.snapshot.params['id'])));
+  box$: Observable<Box | undefined> = this.store.pipe(
+    select(selectBox(this.route.snapshot.params['id']))
+  );
   opening: boolean = false;
-  wonItem$: Observable<ItemVariant> | undefined;
+  wonItem$: Observable<ItemVariant| undefined>  = of(undefined);
+  wonItemLoaded: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,14 +37,18 @@ export default class BoxDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.box$ = this.store.pipe(select(selectBox(this.route.snapshot.params['id'])));
+    this.box$ = this.store.pipe(
+      select(selectBox(this.route.snapshot.params['id']))
+    );
   }
 
   openBox(boxId: string) {
-    this.wonItem$ = undefined;
     this.opening = true;
-    this.wonItem$ = this.boxesService
-      .openBox(boxId)
-      .pipe(tap(() => (this.opening = false)));
+    this.wonItem$ = this.boxesService.openBox(boxId).pipe(
+      tap(() => {
+        this.opening = false;
+        this.wonItemLoaded = true;
+      })
+    );
   }
 }

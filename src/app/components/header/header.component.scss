@@ -3,4 +3,17 @@ header{
   justify-content: space-between;
   max-width: 100vw;
   padding: 10px;
+  background-color: #0a69aa;
+  color: #ffffff;
+  min-width: 600px;
+}
+
+.vertically-centered{
+  margin: auto 0;
+  line-height: 1.5;
+}
+
+.user-info{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
