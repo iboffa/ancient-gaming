@@ -17,24 +17,7 @@ const LOGIN_URL =
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private apollo: Apollo, private store: Store<AppState>) {
-    apollo
-      .subscribe<UpdateWalletNotification>({
-        query: gql`
-          subscription OnUpdateWallet {
-            updateWallet {
-              wallet {
-                id
-                amount
-                name
-              }
-            }
-          }
-        `,
-      })
-      .pipe(map((notification) => notification.data!.updateWallet))
-      .subscribe((wallet) => this.store.dispatch(updateWallet({ wallet })));
-  }
+  constructor(private apollo: Apollo, private store: Store<AppState>) {}
 
   login() {
     window.location.href = LOGIN_URL;
@@ -58,5 +41,24 @@ export class UserService {
         `,
       })
       .valueChanges.pipe(map((result) => result.data.currentUser));
+  }
+
+  subscribeWalletUpdate() {
+    this.apollo
+      .subscribe<UpdateWalletNotification>({
+        query: gql`
+          subscription OnUpdateWallet {
+            updateWallet {
+              wallet {
+                id
+                amount
+                name
+              }
+            }
+          }
+        `,
+      })
+      .pipe(map((notification) => notification.data!.updateWallet))
+      .subscribe((wallet) => this.store.dispatch(updateWallet({ wallet })));
   }
 }
