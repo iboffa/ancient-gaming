@@ -19,4 +19,8 @@ export default class BoxListComponent {
   availableBoxes$: Observable<Box[]> = this.store.pipe(select(selectAllBoxes));
 
   constructor(private store: Store<AppState>) {}
+
+  trackBox(index: number, box: Box){
+    return box.id;
+  }
 }

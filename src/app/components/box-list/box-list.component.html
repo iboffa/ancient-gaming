@@ -1,5 +1,5 @@
 <div class="list-layout">
-  <div *ngFor="let box of availableBoxes$|async">
+  <div *ngFor="let box of availableBoxes$|async; trackBy:trackBox">
     <app-box-item [box]="box"></app-box-item>
   </div>
 </div>

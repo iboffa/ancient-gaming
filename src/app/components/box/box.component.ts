@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Box, ItemVariant } from 'src/graphql.types';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './box.component.html',
-  styleUrls: ['./box.component.scss']
+  styleUrls: ['./box.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoxComponent {
     @Input() box!: Box;
